@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import "../styles/Login.css";
 
@@ -48,6 +49,9 @@ export default function Register() {
 						<input type="password" />
 					</div>
 					<button type="submit">login</button>
+					<p>
+						Not registered yet? Signup <Link to="/register">here</Link>
+					</p>
 				</div>
 			</form>
 		</div>

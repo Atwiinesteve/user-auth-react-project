@@ -155,3 +155,13 @@ form button {
     font-size: 1.1rem;
     text-transform: uppercase;
 }
+
+form p {
+    margin: 0.6rem 0;
+    text-align: center;
+}
+
+form p a {
+    color: rgb(68, 68, 145);
+    text-decoration: underline;
+}
