@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 import "../styles/Register.css";
 
@@ -12,9 +13,16 @@ export default function Register() {
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
 
+	function handleRegister(e) {
+		e.preventDefault()
+		axios.post('http://localhost:8080/register', {
+			names, email, username, password
+		}).then((response) => response.json()).catch((err) => console.log(err))
+	}
+
 	return (
 		<div className="register--form">
-			<form>
+			<form onSubmit={handleRegister}>
 				<div className="header">
 					<h2>Create your account</h2>
 					<p>sign up below using</p>
