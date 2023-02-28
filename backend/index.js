@@ -9,9 +9,11 @@ require('../backend/database/db.connections')
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors({
-    origin: 'http://localhost:3000'
-}));
+app.use(
+	cors({
+		origin: "http://127.0.0.1:3000",
+	}),
+);
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser())
