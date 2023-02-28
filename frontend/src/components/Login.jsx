@@ -1,17 +1,17 @@
 import React from "react";
 
-import "../styles/Register.css";
+import "../styles/Login.css";
 
 export default function Register() {
 	const GoogleImage = "https://cdn-icons-png.flaticon.com/512/281/281764.png";
 	const FacebookImage = "https://cdn-icons-png.flaticon.com/512/174/174848.png";
 
 	return (
-		<div className="register--form">
+		<div className="login--form">
 			<form>
 				<div className="header">
-					<h2>Create your account</h2>
-					<p>sign up below using</p>
+					<h2>Login into your account</h2>
+					<p>signin below using</p>
 					<button>
 						<span>
 							<img
@@ -35,27 +35,19 @@ export default function Register() {
 						facebook
 					</button>
 				</div>
-                <div className="or">
-                    <p>or signup here</p>
-                </div>
+				<div className="or">
+					<p>or signin here</p>
+				</div>
 				<div className="input--areas">
-					<div className="input--area">
-						<label htmlFor="">full names</label>
-						<input type="text" />
-					</div>
 					<div className="input--area">
 						<label htmlFor="">email</label>
 						<input type="email" />
 					</div>
 					<div className="input--area">
-						<label htmlFor="">username</label>
-						<input type="text" />
-					</div>
-					<div className="input--area">
 						<label htmlFor="">password</label>
 						<input type="password" />
 					</div>
-					<button type="submit">register</button>
+					<button type="submit">login</button>
 				</div>
 			</form>
 		</div>
