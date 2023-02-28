@@ -35,9 +35,9 @@ export default function Register() {
 						facebook
 					</button>
 				</div>
-                <div className="or">
-                    <p>or signup here</p>
-                </div>
+				<div className="or">
+					<p>or signup here</p>
+				</div>
 				<div className="input--areas">
 					<div className="input--area">
 						<label htmlFor="">full names</label>
