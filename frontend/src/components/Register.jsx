@@ -13,11 +13,20 @@ export default function Register() {
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
 
-	function handleRegister(e) {
+	async function handleRegister(e) {
 		e.preventDefault()
-		axios.post('http://localhost:8080/register', {
+		const response = await axios.post('http://localhost:8080/register', {
 			names, email, username, password
-		}).then((response) => response.json()).catch((err) => console.log(err))
+		})
+		if(response.status === 200) {
+			alert('User successfully registered')
+			setNames('')
+			setEmail('')
+			setUsername('')
+			setPassword('')
+		} else {
+			alert('User not registered..')
+		}
 	}
 
 	return (
@@ -85,11 +94,11 @@ export default function Register() {
 							type="password"
 						/>
 					</div>
-					<button type="submit">register</button>
-					<p>
-						Already have account? Signin <Link to="/login">here</Link>
-					</p>
 				</div>
+				<button>register</button>
+				<p>
+					Already have account? Signin <Link to="/login">here</Link>
+				</p>
 			</form>
 		</div>
 	);
