@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -12,31 +12,23 @@ export default function Login() {
 	const [password, setPassword] = useState("");
 
 	async function handleLogin(e) {
-		try {
-			e.preventDefault();
-			const response = await axios.post("http://localhost:8080/login", {
-				email,
-				password,
-			});
-			if (response.status === 200) {
-				alert("User successfully Logged in..");
-				setEmail("");
-				setPassword("");
-			} else {
-				alert("User NOT logged in..");
-			}
-		} catch (error) {
-			if (error.response) {
-				console.log(error.response.data);
-				console.log(error.response.status);
-				console.log(error.response.headers);
-			}
+		e.preventDefault();
+		const response = await axios.post("http://localhost:8080/login", {
+			email,
+			password,
+		}, {withCredentials: true});
+		if (response.status === 200) {
+			alert("User successfully Logged in..");
+			setEmail("");
+			setPassword("");
+	} else {
+			alert("User NOT logged in..");
 		}
 	}
 
 	return (
 		<div className="login--form">
-			<form onSubmit={() => handleLogin}>
+			<form onSubmit={handleLogin}>
 				<div className="header">
 					<h2>Login into your account</h2>
 					<p>signin below using</p>
