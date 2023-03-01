@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-require('dotenv/config')
+require('dotenv').config();
 
 const User = require("../models/user.model");
 
@@ -46,8 +46,17 @@ const loginUser = async (request, response) => {
 			const validPassword = await bcrypt.compare(request.body.password, user.password)
 			if(validPassword) {
 				const maxAge = 1*24*60*60;
-				const token = jwt.sign({ id: user._id }, process.env.SECRET_TOKEN, {expiresIn: maxAge})
-				response.cookie('token', token, { httpOnly: true, maxAge: maxAge })
+				jwt.sign({ id: user._id }, process.env.SECRET_TOKEN, { expiresIn: maxAge }, (error, token) => {
+					if(error) {
+						console.log({
+							name: error.name,
+							message: error.message,
+							stack: error.stack,
+						});
+					} else {
+						response.cookie('token', token).send();
+					}
+				})
 			}
 		}
 	} catch (error) {
