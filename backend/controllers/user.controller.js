@@ -39,19 +39,17 @@ const registerUser = async (request, response) => {
 
 const loginUser = async (request, response) => {
 	try {
-        const user = await User.findOne({ email: request.body.email });
-        if(!user) {
-            return response.status(400).json({ message: "User with that email is not found"})
-        } else {
-            const validPassword = bcrypt.compare(request.body.password, user.password);
-            if(!validPassword) {
-                return response.status(400).json({ message: "Invalid email/password"});
-            } else {
-                const maxAge = 1*24*60*60;
-                const token = jwt.sign({ id: user._id }, process.env.SECRET_TOKEN, { expiresIn: maxAge})
-                response.cookie('token', token);
-            }
-        }
+		const user = await User.findOne({ email: request.body.email })
+		if(!user) {
+			return response.json({ message: 'User not found'})
+		} else {
+			const validPassword = await bcrypt.compare(request.body.password, user.password)
+			if(validPassword) {
+				const maxAge = 1*24*60*60;
+				const token = jwt.sign({ id: user._id }, process.env.SECRET_TOKEN, {expiresIn: maxAge})
+				response.cookie('token', token, { httpOnly: true, maxAge: maxAge })
+			}
+		}
 	} catch (error) {
 		console.log({
 			name: error.name,
