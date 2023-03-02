@@ -8,7 +8,7 @@ import "../styles/Login.css";
 
 export default function Login() {
 	const GoogleImage = "https://cdn-icons-png.flaticon.com/512/281/281764.png";
-	const FacebookImage = "https://cdn-icons-png.flaticon.com/512/174/174848.png";
+	const GithubImage = "https://cdn-icons-png.flaticon.com/512/733/733609.png";
 
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -50,11 +50,11 @@ export default function Login() {
 							<img
 								width="24px"
 								height="24px"
-								src={FacebookImage}
+								src={GithubImage}
 								alt="google logo"
 							/>
 						</span>
-						facebook
+						Github
 					</button>
 				</div>
 				<div className="or">
