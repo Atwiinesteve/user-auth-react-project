@@ -17,7 +17,7 @@ const registerUser = async (request, response) => {
 		user
 			.save()
 			.then((user) => {
-				jwt.sign({ id: user._id, email: user.email}, process.nextTick.SECRET_TOKEN, (error, token) =>{
+				jwt.sign({ id: user._id, email: user.email}, process.env.SECRET_TOKEN, (error, token) =>{
 					if(error) {
 						console.log({
 							name: error.name,

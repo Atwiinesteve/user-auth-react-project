@@ -2,6 +2,8 @@ import React, { useState} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
+import { signInWithGoogle } from '../firebase/firebase';
+
 import "../styles/Login.css";
 
 export default function Login() {
@@ -32,7 +34,7 @@ export default function Login() {
 				<div className="header">
 					<h2>Login into your account</h2>
 					<p>signin below using</p>
-					<button>
+					<button onClick={signInWithGoogle}>
 						<span>
 							<img
 								width="24px"
