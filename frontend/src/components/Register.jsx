@@ -13,10 +13,13 @@ export default function Register() {
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
 
+
 	async function handleRegister(e) {
 		e.preventDefault()
 		const response = await axios.post('http://localhost:8080/register', {
 			names, email, username, password
+		}).then((user) => {
+			return response.json(user)
 		})
 		if(response.status === 200) {
 			alert('User successfully registered')
