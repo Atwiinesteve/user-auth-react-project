@@ -1,9 +1,8 @@
-import React, {useContext, useState} from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios';
 
 import "../styles/Register.css";
-import UserContext from "../context/UserContext";
 
 export default function Register() {
 	const GoogleImage = "https://cdn-icons-png.flaticon.com/512/281/281764.png";
@@ -14,14 +13,13 @@ export default function Register() {
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
 
-	const user = useContext(UserContext)
 
 	async function handleRegister(e) {
 		e.preventDefault()
 		const response = await axios.post('http://localhost:8080/register', {
 			names, email, username, password
-		}).then((response) => {
-			user.setEmail(response.data.email)
+		}).then((user) => {
+			return response.json(user)
 		})
 		if(response.status === 200) {
 			alert('User successfully registered')
