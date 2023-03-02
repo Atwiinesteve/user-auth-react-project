@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios';
 
+import { signInWithGoogle } from '../firebase/firebase';
+
 import "../styles/Register.css";
 
 export default function Register() {
@@ -18,8 +20,6 @@ export default function Register() {
 		e.preventDefault()
 		const response = await axios.post('http://localhost:8080/register', {
 			names, email, username, password
-		}).then((user) => {
-			return response.json(user)
 		})
 		if(response.status === 200) {
 			alert('User successfully registered')
@@ -38,7 +38,7 @@ export default function Register() {
 				<div className="header">
 					<h2>Create your account</h2>
 					<p>sign up below using</p>
-					<button>
+					<button onClick={signInWithGoogle}>
 						<span>
 							<img
 								width="24px"
