@@ -2,13 +2,13 @@ import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios';
 
-import { signInWithGoogle } from '../firebase/firebase';
+import { signInWithGoogle,  signInWithGithub } from '../firebase/firebase';
 
 import "../styles/Register.css";
 
 export default function Register() {
 	const GoogleImage = "https://cdn-icons-png.flaticon.com/512/281/281764.png";
-	const FacebookImage = "https://cdn-icons-png.flaticon.com/512/174/174848.png";
+	const GithubImage = "https://cdn-icons-png.flaticon.com/512/733/733609.png";
 
 	const [names, setNames] = useState('')
 	const [email, setEmail] = useState('')
@@ -49,16 +49,16 @@ export default function Register() {
 						</span>
 						google
 					</button>
-					<button>
+					<button onClick={signInWithGithub}>
 						<span>
 							<img
 								width="24px"
 								height="24px"
-								src={FacebookImage}
-								alt="google logo"
+								src={GithubImage}
+								alt="github logo"
 							/>
 						</span>
-						facebook
+						Github
 					</button>
 				</div>
 				<div className="or">
